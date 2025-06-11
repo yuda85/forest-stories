@@ -1,0 +1,70 @@
+<div class="fullpage-swiper-container">
+  <swiper-container #swiperRef slides-per-view="1" speed="1000" init="false">
+    <swiper-slide *ngFor="let story of stories; let i = index">
+      <div
+        class="fullpage-slide"
+        [ngStyle]="{ 'background-image': 'url(' + story.backgroundImage + ')' }"
+      >
+        <div class="dark-overlay"></div>
+
+        <div class="slide-content">
+          <div class="content-wrapper">
+            <div class="story-layout">
+              <div class="child-section">
+                <img
+                  [src]="story.childImage"
+                  class="child-image"
+                  [alt]="story.childName"
+                />
+                <h2 class="child-name">{{ story.childName }}</h2>
+              </div>
+
+              <div class="story-section">
+                <p class="story-title">{{ story.title }}</p>
+                <p class="story-text">{{ story.text }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <!-- Custom Navigation -->
+  <div class="custom-navigation">
+    <button class="nav-btn prev-btn" (click)="prevSlide()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M15 18L9 12L15 6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+    <button class="nav-btn next-btn" (click)="nextSlide()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M9 18L15 12L9 6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="slide-indicators">
+    <div
+      *ngFor="let slide of slides; let i = index"
+      class="indicator"
+      [class.active]="currentSlide === i"
+      (click)="goToSlide(i)"
+    >
+      {{ i + 1 }}
+    </div>
+  </div>
+</div>

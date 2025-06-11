@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'swiper/css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/pagination';
+
+body {
+  font-family: 'Alef', sans-serif;
+  direction: rtl;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #000; // optional base
+}
