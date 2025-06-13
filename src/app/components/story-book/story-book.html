@@ -1,5 +1,19 @@
 <div class="fullpage-swiper-container">
   <swiper-container #swiperRef slides-per-view="1" speed="1000" init="false">
+    <swiper-slide>
+      <div
+        class="cover-slide"
+        style="background-image: url('images/forest-cover.jpg')"
+      >
+        <div class="cover-overlay">
+          <div class="cover-content">
+            <h1 class="book-title">ספר אגדות עצים</h1>
+            <h2 class="book-authors">מאת הסופרים: ילדי כיתה ג'1</h2>
+            <p class="book-editor">עורכת לשונית: המחנכת רותם</p>
+          </div>
+        </div>
+      </div>
+    </swiper-slide>
     <swiper-slide *ngFor="let story of stories; let i = index">
       <div
         class="fullpage-slide"
@@ -57,7 +71,7 @@
   </div>
 
   <!-- Navigation dots -->
-  <div class="slide-indicators">
+  <!-- <div class="slide-indicators">
     <div
       *ngFor="let slide of slides; let i = index"
       class="indicator"
@@ -66,5 +80,5 @@
     >
       {{ i + 1 }}
     </div>
-  </div>
+  </div> -->
 </div>

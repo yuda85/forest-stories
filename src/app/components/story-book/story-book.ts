@@ -1,6 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { Story } from '../../models/story.model';
-import { StoryService } from "../../services/story"
+import { StoryService } from '../../services/story';
 import { register } from 'swiper/element/bundle';
 import { CommonModule } from '@angular/common';
 import Swiper from 'swiper';
@@ -11,14 +16,12 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
   imports: [CommonModule],
   templateUrl: './story-book.html',
   styleUrl: './story-book.scss',
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class StoryBook {
-stories: Story[] = [];
+  stories: Story[] = [];
 
-  constructor(private storyService: StoryService) {
-
-  }
+  constructor(private storyService: StoryService) {}
 
   // ngOnInit(): void {
   //
@@ -31,51 +34,55 @@ stories: Story[] = [];
   slides = [
     {
       title: 'Welcome to Our Platform',
-      description: 'Discover amazing features and capabilities that will transform your workflow and boost productivity.',
+      description:
+        'Discover amazing features and capabilities that will transform your workflow and boost productivity.',
       image: 'https://picsum.photos/400/300?random=1',
       bgColor: '#667eea',
-      buttonText: 'Get Started'
+      buttonText: 'Get Started',
     },
     {
       title: 'Powerful Analytics',
-      description: 'Gain deep insights into your data with our advanced analytics tools and real-time reporting.',
+      description:
+        'Gain deep insights into your data with our advanced analytics tools and real-time reporting.',
       image: 'https://picsum.photos/400/300?random=2',
       bgColor: '#764ba2',
-      buttonText: 'Learn More'
+      buttonText: 'Learn More',
     },
     {
       title: 'Seamless Integration',
-      description: 'Connect with your favorite tools and services through our extensive API and plugin ecosystem.',
+      description:
+        'Connect with your favorite tools and services through our extensive API and plugin ecosystem.',
       image: 'https://picsum.photos/400/300?random=3',
       bgColor: '#f093fb',
-      buttonText: 'Explore APIs'
+      buttonText: 'Explore APIs',
     },
     {
       title: 'Enterprise Security',
-      description: 'Your data is protected with bank-level security, compliance certifications, and encryption.',
+      description:
+        'Your data is protected with bank-level security, compliance certifications, and encryption.',
       image: 'https://picsum.photos/400/300?random=4',
       bgColor: '#4facfe',
-      buttonText: 'View Security'
+      buttonText: 'View Security',
     },
     {
       title: 'Ready to Begin?',
-      description: 'Join thousands of satisfied customers who have transformed their business with our platform.',
+      description:
+        'Join thousands of satisfied customers who have transformed their business with our platform.',
       image: 'https://picsum.photos/400/300?random=5',
       bgColor: '#43e97b',
-      buttonText: 'Start Free Trial'
-    }
+      buttonText: 'Start Free Trial',
+    },
   ];
 
   ngOnInit() {
     // Configure Swiper modules
     Swiper.use([Navigation, Pagination, Autoplay]);
-     this.stories = this.storyService.getStories();
+    this.stories = this.storyService.getStories();
   }
 
   ngAfterViewInit() {
     // Wait for the swiper element to be ready
     setTimeout(() => {
-
       this.initializeSwiper();
     }, 100);
   }
@@ -95,7 +102,7 @@ stories: Story[] = [];
         } else {
           setTimeout(checkSwiper, 50);
         }
-        register()
+        register();
       };
       checkSwiper();
     }
@@ -104,7 +111,8 @@ stories: Story[] = [];
   private setupEventListeners() {
     if (this.swiperInstance) {
       this.swiperInstance.on('slideChange', () => {
-        this.currentSlide = this.swiperInstance.realIndex || this.swiperInstance.activeIndex;
+        this.currentSlide =
+          this.swiperInstance.realIndex || this.swiperInstance.activeIndex;
         console.log('Slide changed to:', this.currentSlide);
       });
 
@@ -146,7 +154,7 @@ stories: Story[] = [];
   onSlideAction(slideIndex: number) {
     console.log(`Action clicked on slide ${slideIndex + 1}`);
     // Add your custom logic here for each slide's action
-    switch(slideIndex) {
+    switch (slideIndex) {
       case 0:
         console.log('Get Started clicked');
         break;
@@ -164,5 +172,4 @@ stories: Story[] = [];
         break;
     }
   }
-
 }
